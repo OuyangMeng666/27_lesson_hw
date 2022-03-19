@@ -3,28 +3,28 @@
     "model": "ads.category",
     "pk": 1,
     "fields": {
-      "name": "Мебель и интерьер"
+      "name": "Котики"
     }
   },
   {
     "model": "ads.category",
     "pk": 2,
     "fields": {
-      "name": "Мебель и интерьер"
+      "name": "Песики"
     }
   },
   {
     "model": "ads.category",
     "pk": 3,
     "fields": {
-      "name": "Мебель и интерьер"
+      "name": "Книги"
     }
   },
   {
     "model": "ads.category",
     "pk": 4,
     "fields": {
-      "name": "Мебель и интерьер"
+      "name": "Растения"
     }
   },
   {
