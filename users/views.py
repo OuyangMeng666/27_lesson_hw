@@ -4,7 +4,6 @@ from django.conf import settings
 from django.core.paginator import Paginator
 from django.db.models import Count
 from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -33,7 +32,7 @@ class UserView(ListView):
                 "last_name": user.last_name,
                 "role": user.role,
                 "age": user.age,
-                "location": list(map(str, user.locations.all()))
+                "locations": list(map(str, user.locations.all()))
             })
 
         response = {
@@ -58,14 +57,14 @@ class UserDetailView(DetailView):
             "last_name": user.last_name,
             "role": user.role,
             "age": user.age,
-            "location": list(map(str, user.locations.all()))
+            "locations": list(map(str, user.locations.all()))
         })
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UserCreateView(CreateView):
     model = User
-    fields = ["username", "password", "first_name", "last_name", "role", "age", "location"]
+    fields = ["username", "password", "first_name", "last_name", "role", "age", "locations"]
 
     def post(self, request, *args, **kwargs):
         user_data = json.loads(request.body)
@@ -90,14 +89,14 @@ class UserCreateView(CreateView):
             "last_name": user.last_name,
             "role": user.role,
             "age": user.age,
-            "location": list(map(str, user.locations.all()))
+            "locations": list(map(str, user.locations.all()))
         })
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UserUpdateView(UpdateView):
     model = User
-    fields = ["username", "password", "first_name", "last_name", "role", "age", "location"]
+    fields = ["username", "password", "first_name", "last_name", "role", "age", "locations"]
 
     def patch(self, request, *args, **kwargs):
         super().post(request, *args, **kwargs)
@@ -122,7 +121,7 @@ class UserUpdateView(UpdateView):
             "last_name": self.object.last_name,
             "role": self.object.role,
             "age": self.object.age,
-            "location": list(map(str, self.object.locations.all()))
+            "locations": list(map(str, self.object.locations.all()))
         })
 
 
